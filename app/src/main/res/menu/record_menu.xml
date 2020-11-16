@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_record_all"
+        android:title="Show All Data" />
+    <item android:title="Sort by Date">
+        <menu>
+            <item
+                android:id="@+id/nav_record_softDateAscen"
+                android:title="Date Ascending" />
+            <item
+                android:id="@+id/nav_record_softDateDesc"
+                android:title="Date Descending" />
+        </menu>
+    </item>
+    <item android:title="Sort by Status">
+        <menu>
+            <item
+                android:id="@+id/nav_record_safe"
+                android:title="Safe" />
+            <item
+                android:id="@+id/nav_record_danger"
+                android:title="Danger" />
+        </menu>
+    </item>
+    <item android:title="Sort by Entry">
+        <menu>
+            <item
+                android:id="@+id/nav_record_yes"
+                android:title="Yes" />
+            <item
+                android:id="@+id/nav_record_no"
+                android:title="No" />
+        </menu>
+    </item>
+</menu>

@@ -34,63 +34,60 @@ public class ScannerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scanner);
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Scan QR Code");
+        actionBar.setTitle("INTI Medicine | QR Code Scanner");
         actionBar.setDisplayHomeAsUpEnabled(true);
-
         surfaceView = findViewById(R.id.camera_preview);
         textView = findViewById(R.id.txtQR);
-
         barcodeDetector = new BarcodeDetector.Builder(this)
                 .setBarcodeFormats(Barcode.QR_CODE).build();
-
-        cameraSource = new CameraSource.Builder(this, barcodeDetector)
-                .setRequestedPreviewSize(1920,1080).build();
-
+        cameraSource = new CameraSource.Builder(this, barcodeDetector).setAutoFocusEnabled(true)
+                .setRequestedPreviewSize(1600, 900).build();
         surfaceView.getHolder().addCallback(new SurfaceHolder.Callback() {
-            @Override public void surfaceCreated(@NonNull SurfaceHolder surfaceHolder) {
-                if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA) !=
-                        PackageManager.PERMISSION_GRANTED) {
+            @Override
+            public void surfaceCreated(@NonNull SurfaceHolder surfaceHolder) {
+                if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA)
+                        != PackageManager.PERMISSION_GRANTED) {
                     return;
                 }
-                try{
+                try {
                     cameraSource.start(surfaceHolder);
-                }
-                catch (IOException e){
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
-
             }
 
             @Override
             public void surfaceChanged(@NonNull SurfaceHolder surfaceHolder, int i, int i1,
                                        int i2) {
-
             }
 
-            @Override public void surfaceDestroyed(@NonNull SurfaceHolder surfaceHolder) {
+            @Override
+            public void surfaceDestroyed(@NonNull SurfaceHolder surfaceHolder) {
                 cameraSource.stop();
             }
         });
 
         barcodeDetector.setProcessor(new Detector.Processor<Barcode>() {
-            @Override public void release() {
-
+            @Override
+            public void release() {
             }
 
-            @Override public void receiveDetections(Detector.Detections<Barcode> detections) {
+            @Override
+            public void receiveDetections(Detector.Detections<Barcode> detections) {
                 SparseArray<Barcode> qrCodes = detections.getDetectedItems();
-
-                if(qrCodes.size() != 0){
+                if (qrCodes.size() != 0) {
                     textView.post(new Runnable() {
-                        @Override public void run() {
-                            Vibrator vibrator = (Vibrator) getApplicationContext().getSystemService(
+                        @Override
+                        public void run() {
+                            Vibrator vibrator = (Vibrator) getApplicationContext().
+                                    getSystemService(
                                     Context.VIBRATOR_SERVICE);
                             vibrator.vibrate(1000);
-
                             cameraSource.stop();
-
-                            Intent intent = new Intent(ScannerActivity.this,DecodeActivity.class);
-                            intent.putExtra("uid",qrCodes.valueAt(0).displayValue);
+                            Intent intent = new Intent(ScannerActivity.this,
+                                    DecodeActivity.class);
+                            intent.putExtra("uid", qrCodes.valueAt(0).
+                                    displayValue);
                             startActivity(intent);
 
                         }
@@ -100,3 +97,5 @@ public class ScannerActivity extends AppCompatActivity {
         });
     }
 }
+
+

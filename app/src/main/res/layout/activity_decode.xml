@@ -14,7 +14,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:gravity="center">
+        android:gravity="center"
+        android:background="@drawable/sky_bg">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -24,7 +25,8 @@
             android:gravity="center"
             android:orientation="vertical"
             android:paddingTop="25dp"
-            android:paddingBottom="10dp">
+            android:paddingBottom="10dp"
+            android:background="@drawable/iu_campus">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imgUsr"
@@ -46,7 +48,10 @@
                 android:fitsSystemWindows="false"
                 android:orientation="vertical"
                 android:paddingBottom="10dp"
-                android:touchscreenBlocksFocus="false">
+                android:touchscreenBlocksFocus="false"
+                android:background="@drawable/btn_round_bg"
+                android:layout_gravity="center"
+                android:gravity="center">
 
                 <TextView
                     android:id="@+id/txtRoles"
@@ -56,29 +61,32 @@
                     android:text="Roles"
                     android:textAlignment="center"
                     android:textSize="24sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/txtId"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="ID"
-                    android:textAlignment="center"
-                    android:textColor="#000000"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@color/color_one"
+                    android:fontFamily="@font/airbnb_cereal_bold"/>
 
                 <TextView
                     android:id="@+id/txtName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Name"
+                    android:text="Full name"
                     android:textAlignment="center"
-                    android:textColor="#000000"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/airbnb_cereal_medium" />
+
+                <TextView
+                    android:id="@+id/txtId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Student ID"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/airbnb_cereal_medium" />
 
                 <TextView
                     android:id="@+id/txtCountry"
@@ -87,20 +95,20 @@
                     android:layout_weight="1"
                     android:text="Country"
                     android:textAlignment="center"
-                    android:textColor="#000000"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/airbnb_cereal_medium" />
 
                 <TextView
                     android:id="@+id/txtPhone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Phone Number"
+                    android:text="Phone number"
                     android:textAlignment="center"
-                    android:textColor="#000000"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/airbnb_cereal_medium" />
 
                 <TextView
                     android:id="@+id/txt"
@@ -109,31 +117,31 @@
                     android:layout_weight="1"
                     android:text="Email"
                     android:textAlignment="center"
-                    android:textColor="#000000"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/airbnb_cereal_medium" />
 
                 <TextView
                     android:id="@+id/txtDateCheck"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Last Covid Check"
+                    android:text="Last covid-19 checked"
                     android:textAlignment="center"
-                    android:textColor="#000000"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/airbnb_cereal_medium" />
 
                 <TextView
                     android:id="@+id/txtStatus"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:text="Status"
                     android:textAlignment="center"
-                    android:textColor="#000000"
-                    android:textSize="36sp"
-                    android:textStyle="bold" />
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/airbnb_cereal_medium" />
 
             </LinearLayout>
 
@@ -142,30 +150,36 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:background="@drawable/iu_campus">
 
             <Button
                 android:id="@+id/btnApprove"
                 style="@style/Widget.AppCompat.Button.Borderless.Colored"
                 android:layout_width="100dp"
-                android:layout_height="wrap_content"
+                android:layout_height="45dp"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:background="#EB0000"
-                android:backgroundTint="#FFFFFF"
-                android:text="Approve Entry" />
+                android:background="@drawable/main_page_button_bg"
+                android:text="Approve entry"
+                android:textAllCaps="false"
+                android:textSize="18dp"/>
 
             <Button
                 android:id="@+id/btnDenied"
                 style="@style/Widget.AppCompat.Button.Borderless.Colored"
                 android:layout_width="100dp"
-                android:layout_height="wrap_content"
+                android:layout_height="45dp"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:background="#D71E1E"
-                android:backgroundTint="#C67676"
-                android:text="Denied Entry" />
+                android:background="@drawable/main_page_button_bg"
+                android:text="Denied entry"
+                android:textAllCaps="false"
+                android:fontFamily="@font/airbnb_cereal_medium"
+                android:textSize="18dp"/>
         </LinearLayout>
 
 

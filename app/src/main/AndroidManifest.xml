@@ -16,10 +16,12 @@
         <activity
             android:name=".DecodeActivity"
             android:parentActivityName=".ScannerActivity" />
-        <activity android:name=".RecordActivity"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".ScannerActivity"
-            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".RecordActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".ScannerActivity"
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,3 +36,4 @@
     </application>
 
 </manifest>
+

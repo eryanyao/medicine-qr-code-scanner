@@ -35,37 +35,28 @@ import java.util.UUID;
 
 public class DecodeActivity extends AppCompatActivity {
     private FirebaseFirestore firestore;
-
     private String uid;
     Button btnApprove, btnDenied;
     TextView txtId, txtRoles, txtStatus, txtName, txtCountry, txtPhone, txtEmail, txtCheckDate;
     ImageView imgUsr;
     ProgressDialog pd;
-
     private String m_Text = "";
-
     SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_decode);
-
         getSupportActionBar().setTitle("Results");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-
         final Bundle bundle = getIntent().getExtras();
         uid = bundle.getString("uid");
-
         pd = new ProgressDialog(this);
-
         firestore = FirebaseFirestore.getInstance();
-
         imgUsr = findViewById(R.id.imgUsr);
-
         btnApprove = findViewById(R.id.btnApprove);
         btnDenied = findViewById(R.id.btnDenied);
-
         txtId = findViewById(R.id.txtId);
         txtRoles = findViewById(R.id.txtRoles);
         txtStatus = findViewById(R.id.txtStatus);
@@ -74,51 +65,50 @@ public class DecodeActivity extends AppCompatActivity {
         txtPhone = findViewById(R.id.txtPhone);
         txtCountry = findViewById(R.id.txtCountry);
         txtEmail = findViewById(R.id.txt);
-
         update();
-
         btnApprove.setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View view) {
+            @Override
+            public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(DecodeActivity.this);
                 builder.setTitle("Key in temperature");
                 final EditText input = new EditText(DecodeActivity.this);
                 input.setInputType(InputType.TYPE_CLASS_TEXT);
                 builder.setView(input);
-
-                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         m_Text = input.getText().toString();
-                        if(m_Text.isEmpty()){
-                            Toast.makeText(DecodeActivity.this,"Please key in temperature",
+                        if (m_Text.isEmpty()) {
+                            Toast.makeText(DecodeActivity.this, "Please key in temperature",
                                     Toast.LENGTH_SHORT).show();
-                        }
-                        else{
+                        } else {
                             final String recordId = UUID.randomUUID().toString();
                             Date d = new Date();
                             Map<String, Object> RecordData = new HashMap<>();
-
-                            RecordData.put("recordId",recordId);
-                            RecordData.put("studentId",txtId.getText());
-                            RecordData.put("name",txtName.getText());
-                            RecordData.put("checkIn",d);
-                            RecordData.put("entry","Yes");
-                            RecordData.put("status",txtStatus.getText());
-                            RecordData.put("temperature",m_Text);
+                            RecordData.put("recordId", recordId);
+                            RecordData.put("studentId", txtId.getText());
+                            RecordData.put("name", txtName.getText());
+                            RecordData.put("checkIn", d);
+                            RecordData.put("entry", "Yes");
+                            RecordData.put("status", txtStatus.getText());
+                            float integerTemperature = Float.parseFloat(m_Text);
+                            RecordData.put("temperature", Float.toString(integerTemperature));
 
                             firestore.collection("record").document(recordId).set(RecordData).addOnCompleteListener(
                                     new OnCompleteListener<Void>() {
-                                        @Override public void onComplete(@NonNull Task<Void> task) {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
                                             Toast.makeText(DecodeActivity.this, "Record " +
-                                                            "has " +
-                                                            "been " +
-                                                            "successfully saved",
+                                                            "is " +
+                                                            "saved " +
+                                                            "successfully",
                                                     Toast.LENGTH_LONG).show();
                                             record();
                                         }
                                     }).addOnFailureListener(new OnFailureListener() {
-                                @Override public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(DecodeActivity.this, "Error occur. Please try again later.",
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(DecodeActivity.this, "Error occurred. Please try again later",
                                             Toast.LENGTH_LONG).show();
                                     scanner();
                                 }
@@ -133,16 +123,13 @@ public class DecodeActivity extends AppCompatActivity {
                     }
                 });
                 builder.show();
-
             }
         });
-
         btnDenied.setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View view) {
+            @Override
+            public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(DecodeActivity.this);
-
-                builder.setTitle("Are you sure don't let this people in?");
-
+                builder.setTitle("Are you sure don't let this person enters?");
                 builder.setPositiveButton(
                         "No",
                         new DialogInterface.OnClickListener() {
@@ -150,7 +137,6 @@ public class DecodeActivity extends AppCompatActivity {
                                 dialog.cancel();
                             }
                         });
-
                 builder.setNegativeButton(
                         "Yes",
                         new DialogInterface.OnClickListener() {
@@ -158,49 +144,47 @@ public class DecodeActivity extends AppCompatActivity {
                                 final String recordId = UUID.randomUUID().toString();
                                 Date d = new Date();
                                 Map<String, Object> RecordData = new HashMap<>();
-
-                                RecordData.put("recordId",recordId);
-                                RecordData.put("studentId",txtId.getText());
-                                RecordData.put("name",txtName.getText()) ;
-                                RecordData.put("status",txtStatus.getText());
-                                RecordData.put("checkIn",d);
-                                RecordData.put("entry","No");
-                                RecordData.put("temperature",null);
-
+                                RecordData.put("recordId", recordId);
+                                RecordData.put("studentId", txtId.getText());
+                                RecordData.put("name", txtName.getText());
+                                RecordData.put("status", txtStatus.getText());
+                                RecordData.put("checkIn", d);
+                                RecordData.put("entry", "No");
+                                RecordData.put("temperature", "0");
                                 firestore.collection("record").document(recordId).set(RecordData).addOnCompleteListener(
                                         new OnCompleteListener<Void>() {
-                                            @Override public void onComplete(@NonNull Task<Void> task) {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
                                                 Toast.makeText(DecodeActivity.this, "Record " +
-                                                                "has " +
-                                                                "been " +
-                                                                "successfully saved",
+                                                                "is " +
+                                                                "saved " +
+                                                                "successfully",
                                                         Toast.LENGTH_LONG).show();
                                                 scanner();
                                             }
                                         }).addOnFailureListener(new OnFailureListener() {
-                                    @Override public void onFailure(@NonNull Exception e) {
-                                        Toast.makeText(DecodeActivity.this, "Error occur. Please try again later.",
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(DecodeActivity.this, "Error occurred. Please try again later",
                                                 Toast.LENGTH_LONG).show();
                                         scanner();
                                     }
                                 });
-
                             }
                         });
                 builder.create().show();
             }
         });
-
-
     }
 
-    public void update(){
-        pd.setTitle("Loading user data");
-        pd.setMessage("Wait a moment...");
+    public void update() {
+        pd.setTitle("Please wait");
+        pd.setMessage("Loading data..");
         pd.show();
         DocumentReference df = firestore.collection("user").document(uid);
         df.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override public void onSuccess(DocumentSnapshot documentSnapshot) {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
                 String firstName = documentSnapshot.getString("userFirstName");
                 String lastName = documentSnapshot.getString("userLastName");
                 String ic = documentSnapshot.getString("userBarcode");
@@ -224,26 +208,24 @@ public class DecodeActivity extends AppCompatActivity {
                     txtStatus.setTextColor(Color.RED);
                 }
 
-                txtCheckDate.setText(format.format(date.toDate()));
+                txtCheckDate.setText("Last checked: " + format.format(date.toDate()));
                 txtId.setText(ic);
                 txtName.setText(firstName + " " + lastName);
                 txtEmail.setText(email);
                 txtCountry.setText(country);
                 txtPhone.setText(phone);
                 txtRoles.setText(roles);
-
                 pd.dismiss();
             }
         }).addOnFailureListener(new OnFailureListener() {
-            @Override public void onFailure(@NonNull Exception e) {
-                Toast.makeText(DecodeActivity.this,"Record Not Found!",Toast.LENGTH_SHORT).show();
-
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(DecodeActivity.this, "Record is not found!", Toast.LENGTH_SHORT).show();
                 pd.dismiss();
-
                 AlertDialog.Builder builder = new AlertDialog.Builder(DecodeActivity.this);
-                builder.setTitle("User Record Not Found!");
+                builder.setTitle("User record is not found!");
                 builder.setPositiveButton(
-                        "OK",
+                        "Ok",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 scanner();
@@ -254,13 +236,13 @@ public class DecodeActivity extends AppCompatActivity {
         });
     }
 
-    public void scanner(){
-        Intent intent = new Intent(DecodeActivity.this,ScannerActivity.class);
+    public void scanner() {
+        Intent intent = new Intent(DecodeActivity.this, ScannerActivity.class);
         startActivity(intent);
     }
 
-    public void record(){
-        Intent intent = new Intent(DecodeActivity.this,RecordActivity.class);
+    public void record() {
+        Intent intent = new Intent(DecodeActivity.this, RecordActivity.class);
         startActivity(intent);
     }
 }

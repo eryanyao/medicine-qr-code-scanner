@@ -19,10 +19,12 @@
             android:layout_width="match_parent"
             android:layout_height="44dp"
             android:gravity="center"
-            android:text="Please focus on QR Code"
+            android:text="Scanning QR Code"
+            android:textColor="@color/white"
+            android:background="@color/color_one"
             android:textAlignment="center"
             android:textSize="24sp"
-            android:textStyle="bold" />
+            android:fontFamily="@font/airbnb_cereal_bold" />
 
         <SurfaceView
             android:id="@+id/camera_preview"

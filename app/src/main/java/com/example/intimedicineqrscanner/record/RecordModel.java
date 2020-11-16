@@ -5,7 +5,7 @@ import com.google.firebase.Timestamp;
 
 public class RecordModel {
     int numOfData;
-    String entry,studentId,temperature,recordId,status,name;
+    String entry, studentId, temperature, recordId, status, name;
     Timestamp checkIn;
 
     public RecordModel() {

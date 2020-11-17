@@ -94,11 +94,13 @@ public class DecodeActivity extends AppCompatActivity {
                             float integerTemperature = Float.parseFloat(m_Text);
                             RecordData.put("temperature", Float.toString(integerTemperature));
 
-                            firestore.collection("record").document(recordId).set(RecordData).addOnCompleteListener(
+                            firestore.collection("record").document(recordId).
+                                    set(RecordData).addOnCompleteListener(
                                     new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
-                                            Toast.makeText(DecodeActivity.this, "Record " +
+                                            Toast.makeText(DecodeActivity.this,
+                                                    "Record " +
                                                             "is " +
                                                             "saved " +
                                                             "successfully",
@@ -108,7 +110,8 @@ public class DecodeActivity extends AppCompatActivity {
                                     }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(DecodeActivity.this, "Error occurred. Please try again later",
+                                    Toast.makeText(DecodeActivity.this,
+                                            "Error occurred. Please try again later",
                                             Toast.LENGTH_LONG).show();
                                     scanner();
                                 }
@@ -151,11 +154,13 @@ public class DecodeActivity extends AppCompatActivity {
                                 RecordData.put("checkIn", d);
                                 RecordData.put("entry", "No");
                                 RecordData.put("temperature", "0");
-                                firestore.collection("record").document(recordId).set(RecordData).addOnCompleteListener(
+                                firestore.collection("record").document(recordId).
+                                        set(RecordData).addOnCompleteListener(
                                         new OnCompleteListener<Void>() {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
-                                                Toast.makeText(DecodeActivity.this, "Record " +
+                                                Toast.makeText(DecodeActivity.this,
+                                                        "Record " +
                                                                 "is " +
                                                                 "saved " +
                                                                 "successfully",
@@ -165,7 +170,8 @@ public class DecodeActivity extends AppCompatActivity {
                                         }).addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
-                                        Toast.makeText(DecodeActivity.this, "Error occurred. Please try again later",
+                                        Toast.makeText(DecodeActivity.this,
+                                                "Error occurred. Please try again later",
                                                 Toast.LENGTH_LONG).show();
                                         scanner();
                                     }

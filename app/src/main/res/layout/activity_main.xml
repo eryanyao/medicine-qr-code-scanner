@@ -92,7 +92,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/airbnb_cereal_medium"
-            android:text="Beta version 1.0"
+            android:text="Beta version 1.1"
             android:textAlignment="center"
             android:textAllCaps="false"
             android:textColor="@color/color_one"

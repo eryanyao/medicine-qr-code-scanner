@@ -87,3 +87,5 @@ public class RecordModel {
         this.checkIn = checkIn;
     }
 }
+
+

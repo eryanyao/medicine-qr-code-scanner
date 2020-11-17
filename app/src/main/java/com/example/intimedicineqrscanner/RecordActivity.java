@@ -175,7 +175,8 @@ public class RecordActivity extends AppCompatActivity {
         pd.setTitle("Please wait");
         pd.setMessage("Loading data..");
         pd.show();
-        firestore.collection("record").orderBy("checkIn", Query.Direction.DESCENDING).get().addOnCompleteListener(
+        firestore.collection("record").orderBy("checkIn",
+                Query.Direction.DESCENDING).get().addOnCompleteListener(
                 new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -246,7 +247,7 @@ public class RecordActivity extends AppCompatActivity {
     }
 
     public void onBackPressed() {
-        Intent intent = new Intent(RecordActivity.this, ScannerActivity.class);
+        Intent intent = new Intent(RecordActivity.this, MainActivity.class);
         startActivity(intent);
     }
 }

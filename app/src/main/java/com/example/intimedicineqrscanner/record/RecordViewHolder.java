@@ -38,7 +38,10 @@ public class RecordViewHolder extends RecyclerView.ViewHolder {
     }
 
     public interface ClickListener {
-
     }
-
 }
+
+
+
+
+

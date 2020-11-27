@@ -116,7 +116,8 @@ public class RecordActivity extends AppCompatActivity {
                                     doc.getString("recordId"),
                                     doc.getString("status"),
                                     doc.getString("name"),
-                                    doc.getTimestamp("checkIn")
+                                    doc.getTimestamp("checkIn"),
+                                    doc.getString("affiliation")
                             );
                             RecordModelList.add(model);
                             numOfData++;
@@ -153,7 +154,8 @@ public class RecordActivity extends AppCompatActivity {
                                     doc.getString("recordId"),
                                     doc.getString("status"),
                                     doc.getString("name"),
-                                    doc.getTimestamp("checkIn")
+                                    doc.getTimestamp("checkIn"),
+                                    doc.getString("affiliation")
                             );
                             RecordModelList.add(model);
                             numOfData++;
@@ -191,7 +193,8 @@ public class RecordActivity extends AppCompatActivity {
                                     doc.getString("recordId"),
                                     doc.getString("status"),
                                     doc.getString("name"),
-                                    doc.getTimestamp("checkIn")
+                                    doc.getTimestamp("checkIn"),
+                                    doc.getString("affiliation")
                             );
                             RecordModelList.add(model);
                             numOfData++;
@@ -228,7 +231,8 @@ public class RecordActivity extends AppCompatActivity {
                                     doc.getString("recordId"),
                                     doc.getString("status"),
                                     doc.getString("name"),
-                                    doc.getTimestamp("checkIn")
+                                    doc.getTimestamp("checkIn"),
+                                    doc.getString("affiliation")
                             );
                             RecordModelList.add(model);
                             numOfData++;

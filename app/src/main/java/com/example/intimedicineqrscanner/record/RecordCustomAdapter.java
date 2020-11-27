@@ -40,6 +40,7 @@ public class RecordCustomAdapter extends RecyclerView.Adapter<RecordViewHolder> 
     public void onBindViewHolder(@NonNull RecordViewHolder holder, int position) {
         String status = modelList.get(position).getStatus();
         String entry = modelList.get(position).getEntry();
+        String affiliation = modelList.get(position).getAffiliation();
         String temperature = modelList.get(position).getTemperature();
         float convertedTemperature = Float.parseFloat(temperature);
 
@@ -60,11 +61,13 @@ public class RecordCustomAdapter extends RecyclerView.Adapter<RecordViewHolder> 
         }
         holder.txtStatus.setText(status);
         holder.txtEntry.setText(entry);
+        holder.txtAffiliation.setText(affiliation);
         holder.txtTemparuture.setText(Float.toString(convertedTemperature));
         holder.txtId.setText(modelList.get(position).getStudentId());
         holder.txtDate.setText(format.format(modelList.get(position).getCheckIn().toDate()));
         holder.txtName.setText(modelList.get(position).getName());
         holder.txtNum.setText(Integer.toString(modelList.get(position).getNumOfData()));
+
     }
 
     @Override

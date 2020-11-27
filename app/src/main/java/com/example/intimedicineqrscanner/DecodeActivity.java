@@ -58,7 +58,7 @@ public class DecodeActivity extends AppCompatActivity {
         btnApprove = findViewById(R.id.btnApprove);
         btnDenied = findViewById(R.id.btnDenied);
         txtId = findViewById(R.id.txtId);
-        txtRoles = findViewById(R.id.txtRoles);
+        txtRoles = findViewById(R.id.txtRolesMain);
         txtStatus = findViewById(R.id.txtStatus);
         txtName = findViewById(R.id.txtName);
         txtCheckDate = findViewById(R.id.txtDateCheck);
@@ -88,6 +88,7 @@ public class DecodeActivity extends AppCompatActivity {
                             RecordData.put("recordId", recordId);
                             RecordData.put("studentId", txtId.getText());
                             RecordData.put("name", txtName.getText());
+                            RecordData.put("affiliation", txtRoles.getText());
                             RecordData.put("checkIn", d);
                             RecordData.put("entry", "Yes");
                             RecordData.put("status", txtStatus.getText());
@@ -150,6 +151,7 @@ public class DecodeActivity extends AppCompatActivity {
                                 RecordData.put("recordId", recordId);
                                 RecordData.put("studentId", txtId.getText());
                                 RecordData.put("name", txtName.getText());
+                                RecordData.put("affiliation", txtRoles.getText());
                                 RecordData.put("status", txtStatus.getText());
                                 RecordData.put("checkIn", d);
                                 RecordData.put("entry", "No");

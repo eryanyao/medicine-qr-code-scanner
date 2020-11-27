@@ -16,7 +16,7 @@ import java.util.Scanner;
 
 public class RecordViewHolder extends RecyclerView.ViewHolder {
     View mView;
-    TextView txtId, txtStatus, txtName, txtDate, txtTemparuture, txtEntry, txtNum;
+    TextView txtId, txtStatus, txtName, txtDate, txtTemparuture, txtEntry, txtNum, txtAffiliation;
 
     public RecordViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -28,7 +28,7 @@ public class RecordViewHolder extends RecyclerView.ViewHolder {
         txtTemparuture = itemView.findViewById(R.id.txtRecordTemp);
         txtEntry = itemView.findViewById(R.id.txtRecordEntry);
         txtNum = itemView.findViewById(R.id.txtNumOfRecord);
-
+        txtAffiliation = itemView.findViewById(R.id.txtRecordAffiliation);
     }
 
     private RecordViewHolder.ClickListener myClickListener;

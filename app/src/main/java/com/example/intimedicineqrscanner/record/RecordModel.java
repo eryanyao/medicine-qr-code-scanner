@@ -5,14 +5,14 @@ import com.google.firebase.Timestamp;
 
 public class RecordModel {
     int numOfData;
-    String entry, studentId, temperature, recordId, status, name;
+    String entry, studentId, temperature, recordId, status, name, affiliation;
     Timestamp checkIn;
 
     public RecordModel() {
     }
 
     public RecordModel(int numOfData, String entry, String studentId, String temperature,
-                       String recordId, String status, String name, Timestamp checkIn) {
+                       String recordId, String status, String name, Timestamp checkIn, String affiliation) {
         this.numOfData = numOfData;
         this.entry = entry;
         this.studentId = studentId;
@@ -21,6 +21,7 @@ public class RecordModel {
         this.status = status;
         this.name = name;
         this.checkIn = checkIn;
+        this.affiliation = affiliation;
     }
 
     public int getNumOfData() {
@@ -77,6 +78,14 @@ public class RecordModel {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getAffiliation() {
+        return affiliation;
+    }
+
+    public void setAffiliation(String affiliation) {
+        this.affiliation = affiliation;
     }
 
     public Timestamp getCheckIn() {
